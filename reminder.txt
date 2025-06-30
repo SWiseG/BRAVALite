@@ -3,6 +3,15 @@ python -m venv brava_lite
 
 pip install -r requirements.txt
 
+# Criar arquivo .env
+SECRET_KEY=brava_system_lite_desenv
+DEBUG=True
+DB_NAME=brava_lite
+DB_USER=postgres
+DB_PASSWORD=BRV2025!DevOPS
+DB_HOST=localhost
+DB_PORT=5432
+
 # Executar migrações
 python manage.py makemigrations core
 python manage.py migrate
@@ -12,3 +21,4 @@ python manage.py i18n
 
 # Executar servidor
 python manage.py runserver
+
