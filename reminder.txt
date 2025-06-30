@@ -1,0 +1,14 @@
+# Criar ambiente virtual
+python -m venv brava_lite
+
+pip install -r requirements.txt
+
+# Executar migrações
+python manage.py makemigrations core
+python manage.py migrate
+
+# Carregar traduções base
+python manage.py i18n
+
+# Executar servidor
+python manage.py runserver

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Admin</title>
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/static/assets/css/main.css">
+    
+    <!-- Loading screen CSS -->
+    <style>
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- App Container -->
+    <div id="app" style="display: none;">
+        <!-- Auth Layout -->
+        <div id="auth-layout" class="auth-container" style="display: none;">
+            <div id="auth-content"></div>
+        </div>
+        
+        <!-- Main Layout -->
+        <div id="main-layout" class="dashboard-layout" style="display: none;">
+            <!-- Sidebar -->
+            <aside id="sidebar" class="dashboard-sidebar">
+                <!-- Sidebar será carregada dinamicamente -->
+            </aside>
+            
+            <!-- Header -->
+            <header id="header" class="dashboard-header">
+                <!-- Header será carregado dinamicamente -->
+            </header>
+            
+            <!-- Main Content -->
+            <main id="main-content" class="dashboard-main">
+                <!-- Conteúdo será carregado dinamicamente via rotas -->
+            </main>
+        </div>
+        
+        <!-- Modal Container -->
+        <div id="modal-container"></div>
+        
+        <!-- Toast Container -->
+        <div id="toast-container"></div>
+    </div>
+
+    <!-- jQuery and plugins -->
+    <script src="/static/assets/js/lib/jquery-3.7.1.min.js"></script>
+    <script src="/static/assets/js/lib/jquery.router.js"></script>
+    <script src="/static/assets/js/lib/jquery.validate.js"></script>
+    <script src="/static/assets/js/lib/chart.js"></script>
+    
+    <!-- Core application -->
+    <script src="/static/assets/js/core/utils.js"></script>
+    <script src="/static/assets/js/core/api.js"></script>
+    <script src="/static/assets/js/core/auth.js"></script>
+    <script src="/static/assets/js/core/components.js"></script>
+    <script src="/static/assets/js/core/router.js"></script>
+    
+    <!-- Components -->
+    <script src="/static/assets/js/components/sidebar.js"></script>
+    <script src="/static/assets/js/components/header.js"></script>
+    <script src="/static/assets/js/components/modal.js"></script>
+    <script src="/static/assets/js/components/datatable.js"></script>
+    
+    <!-- Start Modules -->
+
+    <!-- Auth -->
+    <script src="/static/assets/js/modules/auth/login.js"></script>
+    <script src="/static/assets/js/modules/auth/register.js"></script>
+    <!-- Dashboard -->
+    <script src="/static/assets/js/modules/dashboard/dashboard.js"></script>
+    <!-- Customers -->
+    <script src="/static/assets/js/modules/customers/index.js"></script>
+    <script src="/static/assets/js/modules/customers/edit.js"></script>
+    <script src="/static/assets/js/modules/customers/detail.js"></script>
+    <!-- Orders -->
+    <script src="/static/assets/js/modules/orders/index.js"></script>
+    <script src="/static/assets/js/modules/orders/edit.js"></script>
+    <script src="/static/assets/js/modules/orders/detail.js"></script>
+    <!-- Products -->
+    <script src="/static/assets/js/modules/products/index.js"></script>
+    <script src="/static/assets/js/modules/products/edit.js"></script>
+    <script src="/static/assets/js/modules/products/detail.js"></script>
+
+    <!-- End Modules -->
+    
+    <!-- Main App -->
+    <script src="/static/assets/js/core/app.js"></script>
+</body>
+</html>
