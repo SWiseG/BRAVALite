@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # core/translation.py
 from django.core.cache import cache
 from django.utils.translation import get_language
@@ -10,7 +11,7 @@ class TranslationManager:
     def get_translations(language_code=None):
         """Retorna todas as traduções para um idioma"""
         if not language_code:
-            language_code = get_language() or 'pt-BR'
+            language_code = get_language() or 'pt-br'
         
         # Tentar buscar no cache
         cache_key = f'translations_{language_code}'
@@ -18,12 +19,12 @@ class TranslationManager:
         
         if translations is None:
             try:
-                language = Language.objects.get(code=language_code, is_active=True)
+                language = Language.objects.get(Codigo=language_code, Ativo=True)
                 translations = {}
                 
-                for trans in Translation.objects.filter(language=language):
+                for trans in Translation.objects.filter(Idioma=language):
                     # Criar estrutura aninhada baseada na chave
-                    keys = trans.key.split('.')
+                    keys = trans.Chave.split('.')
                     current = translations
                     
                     for key in keys[:-1]:
@@ -31,7 +32,7 @@ class TranslationManager:
                             current[key] = {}
                         current = current[key]
                     
-                    current[keys[-1]] = trans.value
+                    current[keys[-1]] = trans.Valor
                 
                 cache.set(cache_key, translations, 3600)
                 

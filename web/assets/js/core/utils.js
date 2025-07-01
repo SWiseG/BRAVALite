@@ -156,7 +156,7 @@ class Utilities {
     
     // Formatação de dados
     formatCurrency(value) {
-        return new Intl.NumberFormat('pt-BR', {
+        return new Intl.NumberFormat('pt-br', {
             style: 'currency',
             currency: 'BRL'
         }).format(value);

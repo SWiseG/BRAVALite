@@ -1,10 +1,9 @@
-// spa/assets/js/core/i18n.js
 class InternationalizationManager {
     constructor() {
-        this.currentLanguage = 'pt-BR';
+        this.currentLanguage = 'pt-br';
         this.translations = {};
         this.availableLanguages = [];
-        this.fallbackLanguage = 'pt-BR';
+        this.fallbackLanguage = 'pt-br';
         
         this.init();
     }
@@ -34,8 +33,8 @@ class InternationalizationManager {
             console.error('Erro ao carregar idiomas:', error);
             // Fallback para idiomas padrão
             this.availableLanguages = [
-                { code: 'pt-BR', name: 'Português Brasil', native_name: 'Português Brasil' },
-                { code: 'en-US', name: 'English United States', native_name: 'English' }
+                { code: 'pt-br', name: 'Português Brasil', native_name: 'Português Brasil' },
+                { code: 'en-us', name: 'English United States', native_name: 'English' }
             ];
         }
     }

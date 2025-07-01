@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # core/management/commands/load_base_translations.py
 from django.core.management.base import BaseCommand
 from core.models import Language, Translation
@@ -8,93 +9,93 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # Criar idiomas padrão
         pt_br, created = Language.objects.get_or_create(
-            code='pt-BR',
+            Codigo='pt-br',
             defaults={
-                'name': 'Português Brasil',
-                'native_name': 'Português Brasil',
-                'flag_icon': 'flag-br',
-                'is_default': True,
-                'is_active': True
+                'Nome': 'Português Brasil',
+                'NomeNativo': 'Português Brasil',
+                'Bandeira': 'flag-br',
+                'Padrao': True,
+                'Ativo': True
             }
         )
         
         en_us, created = Language.objects.get_or_create(
-            code='en-US',
+            Codigo='en-us',
             defaults={
-                'name': 'English United States',
-                'native_name': 'English',
-                'flag_icon': 'flag-us',
-                'is_default': False,
-                'is_active': True
+                'Nome': 'English United States',
+                'NomeNativo': 'English',
+                'Bandeira': 'flag-us',
+                'Padrao': False,
+                'Ativo': True
             }
         )
         
         # Traduções base
         base_translations = {
             # Comum
-            'common.save': {'pt-BR': 'Salvar', 'en-US': 'Save'},
-            'common.cancel': {'pt-BR': 'Cancelar', 'en-US': 'Cancel'},
-            'common.delete': {'pt-BR': 'Excluir', 'en-US': 'Delete'},
-            'common.edit': {'pt-BR': 'Editar', 'en-US': 'Edit'},
-            'common.view': {'pt-BR': 'Visualizar', 'en-US': 'View'},
-            'common.add': {'pt-BR': 'Adicionar', 'en-US': 'Add'},
-            'common.search': {'pt-BR': 'Pesquisar', 'en-US': 'Search'},
-            'common.loading': {'pt-BR': 'Carregando...', 'en-US': 'Loading...'},
-            'common.error': {'pt-BR': 'Erro', 'en-US': 'Error'},
-            'common.success': {'pt-BR': 'Sucesso', 'en-US': 'Success'},
-            'common.warning': {'pt-BR': 'Atenção', 'en-US': 'Warning'},
-            'common.info': {'pt-BR': 'Informação', 'en-US': 'Information'},
-            'common.language_changed': {'pt-BR': 'Idioma alterado com sucesso', 'en-US': 'Language changed successfully'},
-            'common.error_changing_language': {'pt-BR': 'Erro ao alterar idioma', 'en-US': 'Error changing language'},
+            'common.save': {'pt-br': 'Salvar', 'en-us': 'Save'},
+            'common.cancel': {'pt-br': 'Cancelar', 'en-us': 'Cancel'},
+            'common.delete': {'pt-br': 'Excluir', 'en-us': 'Delete'},
+            'common.edit': {'pt-br': 'Editar', 'en-us': 'Edit'},
+            'common.view': {'pt-br': 'Visualizar', 'en-us': 'View'},
+            'common.add': {'pt-br': 'Adicionar', 'en-us': 'Add'},
+            'common.search': {'pt-br': 'Pesquisar', 'en-us': 'Search'},
+            'common.loading': {'pt-br': 'Carregando...', 'en-us': 'Loading...'},
+            'common.error': {'pt-br': 'Erro', 'en-us': 'Error'},
+            'common.success': {'pt-br': 'Sucesso', 'en-us': 'Success'},
+            'common.warning': {'pt-br': 'Atenção', 'en-us': 'Warning'},
+            'common.info': {'pt-br': 'Informação', 'en-us': 'Information'},
+            'common.language_changed': {'pt-br': 'Idioma alterado com sucesso', 'en-us': 'Language changed successfully'},
+            'common.error_changing_language': {'pt-br': 'Erro ao alterar idioma', 'en-us': 'Error changing language'},
             
             # Autenticação
-            'auth.login': {'pt-BR': 'Entrar', 'en-US': 'Login'},
-            'auth.logout': {'pt-BR': 'Sair', 'en-US': 'Logout'},
-            'auth.email': {'pt-BR': 'E-mail', 'en-US': 'Email'},
-            'auth.password': {'pt-BR': 'Senha', 'en-US': 'Password'},
-            'auth.remember_me': {'pt-BR': 'Lembrar-me', 'en-US': 'Remember me'},
-            'auth.forgot_password': {'pt-BR': 'Esqueci minha senha', 'en-US': 'Forgot password'},
-            'auth.login_success': {'pt-BR': 'Login realizado com sucesso', 'en-US': 'Login successful'},
-            'auth.login_error': {'pt-BR': 'Credenciais inválidas', 'en-US': 'Invalid credentials'},
+            'auth.login': {'pt-br': 'Entrar', 'en-us': 'Login'},
+            'auth.logout': {'pt-br': 'Sair', 'en-us': 'Logout'},
+            'auth.email': {'pt-br': 'E-mail', 'en-us': 'Email'},
+            'auth.password': {'pt-br': 'Senha', 'en-us': 'Password'},
+            'auth.remember_me': {'pt-br': 'Lembrar-me', 'en-us': 'Remember me'},
+            'auth.forgot_password': {'pt-br': 'Esqueci minha senha', 'en-us': 'Forgot password'},
+            'auth.login_success': {'pt-br': 'Login realizado com sucesso', 'en-us': 'Login successful'},
+            'auth.login_error': {'pt-br': 'Credenciais inválidas', 'en-us': 'Invalid credentials'},
             
             # Dashboard
-            'dashboard.title': {'pt-BR': 'Dashboard', 'en-US': 'Dashboard'},
-            'dashboard.welcome': {'pt-BR': 'Bem-vindo, {{name}}!', 'en-US': 'Welcome, {{name}}!'},
-            'dashboard.total_sales': {'pt-BR': 'Vendas Totais', 'en-US': 'Total Sales'},
-            'dashboard.orders': {'pt-BR': 'Pedidos', 'en-US': 'Orders'},
-            'dashboard.customers': {'pt-BR': 'Clientes', 'en-US': 'Customers'},
-            'dashboard.products': {'pt-BR': 'Produtos', 'en-US': 'Products'},
+            'dashboard.title': {'pt-br': 'Dashboard', 'en-us': 'Dashboard'},
+            'dashboard.welcome': {'pt-br': 'Bem-vindo, {{name}}!', 'en-us': 'Welcome, {{name}}!'},
+            'dashboard.total_sales': {'pt-br': 'Vendas Totais', 'en-us': 'Total Sales'},
+            'dashboard.orders': {'pt-br': 'Pedidos', 'en-us': 'Orders'},
+            'dashboard.customers': {'pt-br': 'Clientes', 'en-us': 'Customers'},
+            'dashboard.products': {'pt-br': 'Produtos', 'en-us': 'Products'},
             
             # Menu
-            'menu.dashboard': {'pt-BR': 'Dashboard', 'en-US': 'Dashboard'},
-            'menu.products': {'pt-BR': 'Produtos', 'en-US': 'Products'},
-            'menu.orders': {'pt-BR': 'Pedidos', 'en-US': 'Orders'},
-            'menu.customers': {'pt-BR': 'Clientes', 'en-US': 'Customers'},
-            'menu.settings': {'pt-BR': 'Configurações', 'en-US': 'Settings'},
+            'menu.dashboard': {'pt-br': 'Dashboard', 'en-us': 'Dashboard'},
+            'menu.products': {'pt-br': 'Produtos', 'en-us': 'Products'},
+            'menu.orders': {'pt-br': 'Pedidos', 'en-us': 'Orders'},
+            'menu.customers': {'pt-br': 'Clientes', 'en-us': 'Customers'},
+            'menu.settings': {'pt-br': 'Configurações', 'en-us': 'Settings'},
             
             # Produtos
-            'products.title': {'pt-BR': 'Produtos', 'en-US': 'Products'},
-            'products.add': {'pt-BR': 'Adicionar Produto', 'en-US': 'Add Product'},
-            'products.name': {'pt-BR': 'Nome', 'en-US': 'Name'},
-            'products.price': {'pt-BR': 'Preço', 'en-US': 'Price'},
-            'products.stock': {'pt-BR': 'Estoque', 'en-US': 'Stock'},
-            'products.category': {'pt-BR': 'Categoria', 'en-US': 'Category'},
+            'products.title': {'pt-br': 'Produtos', 'en-us': 'Products'},
+            'products.add': {'pt-br': 'Adicionar Produto', 'en-us': 'Add Product'},
+            'products.name': {'pt-br': 'Nome', 'en-us': 'Name'},
+            'products.price': {'pt-br': 'Preço', 'en-us': 'Price'},
+            'products.stock': {'pt-br': 'Estoque', 'en-us': 'Stock'},
+            'products.category': {'pt-br': 'Categoria', 'en-us': 'Category'},
             
             # Pedidos
-            'orders.title': {'pt-BR': 'Pedidos', 'en-US': 'Orders'},
-            'orders.status': {'pt-BR': 'Status', 'en-US': 'Status'},
-            'orders.total': {'pt-BR': 'Total', 'en-US': 'Total'},
-            'orders.date': {'pt-BR': 'Data', 'en-US': 'Date'},
+            'orders.title': {'pt-br': 'Pedidos', 'en-us': 'Orders'},
+            'orders.status': {'pt-br': 'Status', 'en-us': 'Status'},
+            'orders.total': {'pt-br': 'Total', 'en-us': 'Total'},
+            'orders.date': {'pt-br': 'Data', 'en-us': 'Date'},
         }
         
         # Criar traduções
         for key, translations in base_translations.items():
             for lang_code, value in translations.items():
-                language = Language.objects.get(code=lang_code)
+                language = Language.objects.get(Codigo=lang_code)
                 Translation.objects.get_or_create(
-                    key=key,
-                    language=language,
-                    defaults={'value': value}
+                    Chave=key,
+                    Idioma=language,
+                    defaults={'Valor': value}
                 )
         
         self.stdout.write(

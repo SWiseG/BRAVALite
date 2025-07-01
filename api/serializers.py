@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # users/models.py (já temos)
 # users/serializers.py
 from rest_framework import serializers
@@ -13,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 
-                 'role', 'phone', 'avatar', 'theme', 'language', 'is_active']
+                 'GrupoTrabalho', 'Telefone', 'Avatar', 'Tema', 'IdIdioma', 'is_active']
         read_only_fields = ['id', 'is_active']
 
 class LoginSerializer(serializers.Serializer):
@@ -40,12 +41,12 @@ class LoginSerializer(serializers.Serializer):
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Language
-        fields = ['id', 'code', 'name', 'native_name', 'flag_icon', 
-                 'is_active', 'is_default']
+        fields = ['id', 'Codigo', 'Nome', 'NomeNativo', 'Bandeira', 
+                 'Ativo', 'Padrao']
 
 class TranslationSerializer(serializers.ModelSerializer):
-    language_code = serializers.CharField(source='language.code', read_only=True)
+    IdiomaCodigo = serializers.CharField(source='Idioma.Codigo', read_only=True)
     
     class Meta:
         model = Translation
-        fields = ['id', 'key', 'value', 'context', 'language_code']
+        fields = ['id', 'Chave', 'Valor', 'Contexto', 'IdiomaCodigo']

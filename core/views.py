@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -8,7 +9,7 @@ from api.serializers import LanguageSerializer, TranslationSerializer
 from .translation import TranslationManager
 
 class LanguageViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Language.objects.filter(is_active=True)
+    queryset = Language.objects.filter(Ativo=True)
     serializer_class = LanguageSerializer
     permission_classes = [IsAuthenticated]
     
@@ -42,10 +43,10 @@ class TranslationViewSet(viewsets.ReadOnlyModelViewSet):
     @action(detail=False, methods=['post'])
     def change_user_language(self, request):
         """Altera idioma do usuário logado"""
-        language_code = request.data.get('language_code')
+        language_code = request.data.get('IdiomaCodigo')
         
         try:
-            language = Language.objects.get(code=language_code, is_active=True)
+            language = Language.objects.get(Codigo=language_code, Ativo=True)
             request.user.language = language
             request.user.save()
             

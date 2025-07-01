@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # users/views.py
 from rest_framework import viewsets, status
 from rest_framework.decorators import action

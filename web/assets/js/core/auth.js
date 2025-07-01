@@ -1,4 +1,3 @@
-// spa/assets/js/core/auth.js
 class AuthManager {
     constructor() {
         this.tokenKey = 'brava_access_token';
